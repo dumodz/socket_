@@ -49,7 +49,9 @@ class server{
   }
   
   function socketRead(){
-    $read = stream_get_contents($this->client_);
+    $contents = stream_get_contents($this->client_);
+    
+    $read = fread($this->client_, strlen($contents));
     
     $ths->logger->consoleLog('Read: "' . $read . '" from the client');
   }
