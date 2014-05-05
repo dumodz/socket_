@@ -8,6 +8,9 @@
 
 class server{
   private $logger;
+  private $address_;
+  private $port_;
+  private $type_;
   private $server_;
   private $client_;
   private $read_;
@@ -17,7 +20,11 @@ class server{
     $this->logger = new logger();
   }
   
-  function socketConnect($address, $port){
+  function socketConnect($address, $port, $type){
+    $this->address_ = $address;
+    $this->port_ = $port;
+    $this->type_ = $type;
+    
     $this->server_ = stream_socket_server('tcp://' . $address . ':' . $port, $errno, $errstr);
     
     if($server !== false){
