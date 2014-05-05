@@ -7,16 +7,16 @@
 */
 
 class xml{
-  private $xmlResponse;
+  private $xml_;
   
-  function handleXML($xml){
-    switch($xml){
-      case strpos($xml, '<policy-file-request/>'):
-        $xmlResponse = "<cross-domain-policy><allow-access-from domain='*' to-ports='*' /></cross-domain-policy>";
+  function handleXML($read_){
+    switch($read_){
+      case strpos($read_, '<policy-file-request/>'):
+        $xml_ = "<cross-domain-policy><allow-access-from domain='*' to-ports='*' /></cross-domain-policy>";
         break;
     }
     
-    return $xmlResponse;
+    return $xml_;
   }
 }
 ?>
