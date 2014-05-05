@@ -43,7 +43,15 @@ class server{
   function socketAccept(){
     $this->logger->consoleLog('New client connection accepted');
     
+    $this->socketRead();
+    
     $this->socketClose();
+  }
+  
+  function socketRead(){
+    $read = stream_get_contents($this->client_);
+    
+    $ths->logger->consoleLog('Read: "' . $read . '" from the client');
   }
   
   function socketClose(){
