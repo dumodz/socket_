@@ -69,8 +69,14 @@ class server{
   }
   
   function handleClient(){
-    $xml = new xml();
-    $this->write_ = $xml->handleXML($this->read_);
+    $readType = $this->read_[0];
+    
+    switch($readType){
+      case '<':
+        $xml = new xml();
+        $this->write_ = $xml->handleXML($this->read_);
+        break;
+    }
     
     $this->socketWrite();
   }
