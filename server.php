@@ -69,7 +69,9 @@ class server{
   }
   
   function socketWrite(){
-    fwrite($this->write_, strlen($this->write_));
+    $write = $this->write_ . chr(0);
+    
+    fwrite($write, strlen($write));
     
     $this->logger->consoleLog('Wrote: "' . $this->write_ . '" to the client');
   }
