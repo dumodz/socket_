@@ -10,6 +10,8 @@ class server{
   private $logger;
   private $server_;
   private $client_;
+  private $read_;
+  private $write_;
   
   function __construct(){
     $this->logger = new logger();
@@ -51,9 +53,25 @@ class server{
   function socketRead(){
     $contents = stream_get_contents($this->client_);
     
-    $read = fread($this->client_, strlen($contents));
+    $this->read_ = fread($this->client_, strlen($contents));
     
-    $ths->logger->consoleLog('Read: "' . $read . '" from the client');
+    $ths->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
+    
+    // Used to make the socket server respond to the Club Penguin client
+    $this->handleClient();
+  }
+  
+  function handleClient(){
+    $xml = new xml();
+    $this->write_ = $xml->handleXML($this->read_);
+    
+    $this->socketWrite();
+  }
+  
+  function socketWrite(){
+    fwrite($this->write_, strlen($this->write_));
+    
+    $this->logger->consoleLog('Wrote: "' . $this->write_ . '" to the client');
   }
   
   function socketClose(){
