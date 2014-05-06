@@ -62,7 +62,7 @@ class server{
     
     $this->read_ = fread($this->client_, strlen($contents));
     
-    $ths->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
+    $this->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
     
     // Used to make the socket server respond to the Club Penguin client
     $this->handleClient();
