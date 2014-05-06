@@ -7,8 +7,10 @@
 */
 
 class pdo{
-  /*
-    Still being worked on
-  */
+  function pdoConnect($address, $username, $password, $database, $table){
+    /*
+      Still being worked on
+    */
+  }
 }
 ?>
