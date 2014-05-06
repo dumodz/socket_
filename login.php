@@ -15,6 +15,6 @@ require('pdo.php');
 $server = new server();
 $server->socketConnect('127.0.0.1', 6112, 'login');
 
-$pdo = new pdo();
+$pdo = new mysql();
 $pdo->pdoConnect('127.0.0.1', 'root', 'password', 'socket_', 'clients');
 ?>
