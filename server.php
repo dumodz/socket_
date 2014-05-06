@@ -76,6 +76,11 @@ class server{
         $xml = new xml();
         $this->write_ = $xml->handleXML($this->read_);
         break;
+        
+      case '%':
+        $packet = new packet();
+        $this->write_ = $xml->handlePacket($this->read_);
+        break;
     }
     
     $this->socketWrite();
