@@ -11,7 +11,7 @@ class server{
   private $address_;
   private $port_;
   private $type_;
-  private $server_;
+  private $socket_;
   private $client_;
   private $read_;
   private $write_;
@@ -25,9 +25,9 @@ class server{
     $this->port_ = $port;
     $this->type_ = $type;
     
-    $this->server_ = stream_socket_server('tcp://' . $address . ':' . $port, $errno, $errstr);
+    $this->socket_ = stream_socket_server('tcp://' . $address . ':' . $port, $errno, $errstr);
     
-    if($server !== false){
+    if($this->socket_ !== false){
       $this->logger->consoleLog('Connected to server');
       
       $this->socketLoop();
@@ -39,7 +39,7 @@ class server{
   
   function socketLoop(){
     for(;;){
-      $this->client_ = @stream_socket_accept($this->server_);
+      $this->client_ = @stream_socket_accept($this->socket_);
       
       $this->logger->consoleLog('Now accepting client connections');
       
