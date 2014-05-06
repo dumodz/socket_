@@ -63,7 +63,7 @@ class server{
     /*
       Come back to this
     */
-    $this->read_ = fread($this->client_, strlen($this->client_));
+    $this->read_ = fread($this->client_);
     
     $this->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
     
