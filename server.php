@@ -62,7 +62,7 @@ class server{
     
     $this->read_ = fread($this->client_, strlen($contents));
     
-    $this->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
+    $this->logger->consoleLog('Read: "' . $contents . '" from the client');
     
     // Used to make the socket server respond to the Club Penguin client
     $this->handleClient();
@@ -89,7 +89,7 @@ class server{
   function socketWrite(){
     $write = $this->write_ . chr(0);
     
-    fwrite($write, strlen($write));
+    fwrite($this->client_, $write, strlen($write));
     
     $this->logger->consoleLog('Wrote: "' . $this->write_ . '" to the client');
   }
