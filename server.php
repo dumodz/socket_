@@ -39,7 +39,7 @@ class server{
   
   function socketLoop(){
     for(;;){
-      $this->client_ = @stream_socket_accept($this->socket_);
+      $this->client_ = stream_socket_accept($this->socket_);
       
       $this->logger->consoleLog('Now accepting client connections');
       
@@ -63,7 +63,7 @@ class server{
     /*
       Come back to this
     */
-    $this->read_ = fread($this->client_);
+    $this->read_ = fread($this->client_, strlen($contents));
     
     $this->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
     
