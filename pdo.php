@@ -6,7 +6,7 @@
   GitHub: https://github.com/dumodz/socket_/
 */
 
-class pdo{
+class mysql{
   private $logger;
   private $database_;
   private $table_;
