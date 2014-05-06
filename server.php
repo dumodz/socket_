@@ -60,9 +60,12 @@ class server{
   function socketRead(){
     $contents = stream_get_contents($this->client_);
     
-    $this->read_ = fread($this->client_, strlen($contents));
+    /*
+      Come back to this
+    */
+    $this->read_ = fread($this->client_, strlen($this->client_));
     
-    $this->logger->consoleLog('Read: "' . $contents . '" from the client');
+    $this->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
     
     // Used to make the socket server respond to the Club Penguin client
     $this->handleClient();
