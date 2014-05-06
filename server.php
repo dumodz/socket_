@@ -28,12 +28,12 @@ class server{
     $this->socket_ = stream_socket_server('tcp://' . $address . ':' . $port, $errno, $errstr);
     
     if($this->socket_ !== false){
-      $this->logger->consoleLog('Connected to server');
+      $this->logger->consoleLog('Connected to socket server');
       
       $this->socketLoop();
     }
     else{
-      $this->logger->closeLog('Could not connect to server [' . $errno . '] ' . $errstr);
+      $this->logger->closeLog('Could not connect to socket server [' . $errno . '] ' . $errstr);
     }
   }
   
@@ -64,7 +64,7 @@ class server{
     
     // $contents = stream_get_contents($this->client_);
     
-    $this->read_ = fread($this->client_, strlen(stream_get_contents($this->client_)));
+    $this->read_ = fread($this->client_, 2000);
     
     $this->logger->consoleLog('Read: "' . $this->read_ . '" from the client');
     
