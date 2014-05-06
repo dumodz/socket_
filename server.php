@@ -91,11 +91,11 @@ class server{
   }
   
   function socketWrite(){
+    $this->logger->consoleLog('Writing: "' . $this->write_ . '" to the client');
+    
     $write = $this->write_ . chr(0);
     
     fwrite($this->client_, $write, strlen($write));
-    
-    $this->logger->consoleLog('Wrote: "' . $this->write_ . '" to the client');
   }
   
   function socketClose(){
