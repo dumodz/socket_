@@ -33,7 +33,7 @@ class server{
       $this->socketLoop();
     }
     else{
-      $this->logger->closeLog('Could not connect to server');
+      $this->logger->closeLog('Could not connect to server [' . $errno . '] ' . $errstr);
     }
   }
   
